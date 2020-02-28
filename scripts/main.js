@@ -51,6 +51,8 @@ let addTask = function(text) {
 
 	//Adds the edit event
 	paragraph.addEventListener("dblclick", function(event) {
+		this.classList.remove("tasks__name--done");
+		task.classList.remove("tasks__task--done");
 		let input = document.createElement("input");
 		input.classList.add("tasks__edit-input");
 
@@ -76,9 +78,6 @@ let addTask = function(text) {
 	else if (tasks.length < 1) {
 	  placeholder.classList.remove("tasks__placeholder--no-show");
 	}
-
-	// Returns focus to the Add Task input
-	taskText.focus();
 };
 
 addTaskButton.addEventListener("click", event => {
