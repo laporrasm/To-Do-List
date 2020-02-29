@@ -7,7 +7,7 @@ let placeholder = document.querySelector(".tasks__placeholder");
 taskText.focus();
 
 let addTask = function(text) {
-	//Creates task, task text and delete button
+	//Creates the task items
 	let task = document.createElement("div");
 	let paragraph = document.createElement("p");
 	let deleteButton = document.createElement("span");
@@ -22,7 +22,7 @@ let addTask = function(text) {
 	doneButton.classList.add("tasks__done");
 	doneButton.innerHTML = '<i class="fas fa-check-circle"></i>';
 
-	//Appends the task text and buttons to the task
+	//Appends elements to the task
 	task.appendChild(doneButton);
 	task.appendChild(paragraph);
 	task.appendChild(deleteButton);

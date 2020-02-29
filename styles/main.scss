@@ -147,12 +147,6 @@ body {
 	}
 }
 
-@media (max-width: 425px) {
-	.wrapper {
-		width: 90%;
-	}
-}
-
 @media (max-width: 768px) {
 	.wrapper {
 		width: 80%;
@@ -173,7 +167,13 @@ body {
 	}
 }
 
-@media (min-width: 1500px) {
+@media (max-width: 425px) {
+	.wrapper {
+		width: 90%;
+	}
+}
+
+@media (min-width: 1600px) {
 	html {
 		font-size: 1.2rem;
 	}
