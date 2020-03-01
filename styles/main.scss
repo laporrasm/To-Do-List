@@ -20,6 +20,7 @@ body {
 
 .add-task {
 	display: flex;
+	margin-bottom: 2em;
 	background-color: #292929;
 	color: white;
 	
@@ -44,14 +45,19 @@ body {
 		border-radius: 20px;
 		font-size: inherit;
 		cursor: pointer;
+	}
+}
 
-		i {
-			transition: transform .5s;
+.display {
+	display: flex;
+	justify-content: space-between;
 
-			&:hover {
-				transform: rotate(90deg);
-				transition: transform .5s;
-			}
+	&__completed, &__incomplete {
+		color: #616161;
+		cursor: pointer;
+
+		&:hover {
+			color: #f0f0f0;
 		}
 	}
 }
@@ -71,18 +77,14 @@ body {
 	background-color: #292929;
 	overflow: hidden;
 
+	&--inactive {
+		display: none;
+	}
+
 	&__title {
 		margin-top: 0;
 		color: white;
 		font-size: 2.5rem;
-	}
-
-	&__placeholder {
-		color: #616161;
-
-		&--no-show {
-			display: none;
-		}
 	}
 
 	&__task {

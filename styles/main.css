@@ -23,6 +23,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 2em;
   background-color: #292929;
   color: white;
 }
@@ -50,20 +51,22 @@ body {
   cursor: pointer;
 }
 
-.add-task__button i {
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+.display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.add-task__button i:hover {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+.display__completed, .display__incomplete {
+  color: #616161;
+  cursor: pointer;
+}
+
+.display__completed:hover, .display__incomplete:hover {
+  color: #f0f0f0;
 }
 
 @-webkit-keyframes appear {
@@ -95,18 +98,14 @@ body {
   overflow: hidden;
 }
 
+.tasks--inactive {
+  display: none;
+}
+
 .tasks__title {
   margin-top: 0;
   color: white;
   font-size: 2.5rem;
-}
-
-.tasks__placeholder {
-  color: #616161;
-}
-
-.tasks__placeholder--no-show {
-  display: none;
 }
 
 .tasks__task {

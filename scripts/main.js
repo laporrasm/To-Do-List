@@ -1,8 +1,9 @@
-let tasks = [];
 let taskContainer = document.querySelector(".tasks");
+let doneTasksContainer = document.querySelector(".tasks--inactive");
 let addTaskButton = document.querySelector(".add-task__button");
 let taskText = document.querySelector(".add-task__input");
-let placeholder = document.querySelector(".tasks__placeholder");
+let incompleteButton = document.querySelector(".display__incomplete");
+let completedButton = document.querySelector(".display__completed");
 
 taskText.focus();
 
@@ -32,6 +33,14 @@ let addTask = function(text) {
 	doneButton.addEventListener("click", function(event) {
 		paragraph.classList.toggle("tasks__name--done");
 		task.classList.toggle("tasks__task--done");
+
+		if (task.classList.contains("tasks__task--done")) {
+			taskContainer.removeChild(task);
+			doneTasksContainer.appendChild(task);
+		} else {
+			doneTasksContainer.removeChild(task);
+			taskContainer.appendChild(task);
+		}
 	});
 	
 	// Adds the delete event
@@ -39,13 +48,6 @@ let addTask = function(text) {
 		if(confirm("Are you sure you want to delete this task?")) {
 			this.closest(".tasks").removeChild(this.parentNode);
 			tasks.pop(this.parentNode);
-			
-			if (tasks.length > 0 && !placeholder.classList.contains("tasks__placeholder--no-show")) {
-				placeholder.classList.add("tasks__placeholder--no-show");
-			}
-			else if (tasks.length < 1) {
-				placeholder.classList.remove("tasks__placeholder--no-show");
-			}
 		};
 	});
 
@@ -68,16 +70,6 @@ let addTask = function(text) {
 		task.replaceChild(input, this);
 		input.focus();
 	});
-
-	// Adds task to tasks array
-	tasks.push(task);
-	
-	if (tasks.length > 0 && !placeholder.classList.contains("tasks__placeholder--no-show")) {
-		placeholder.classList.add("tasks__placeholder--no-show");
-	}
-	else if (tasks.length < 1) {
-	  placeholder.classList.remove("tasks__placeholder--no-show");
-	}
 };
 
 addTaskButton.addEventListener("click", event => {
@@ -92,4 +84,14 @@ addTaskButton.addEventListener("click", event => {
 
 taskText.addEventListener("keyup", event => {
 	if (event.keyCode === 13) addTaskButton.click();
+});
+
+incompleteButton.addEventListener("click", function(event) {
+	taskContainer.classList.remove("tasks--inactive");
+	doneTasksContainer.classList.add("tasks--inactive");
+});
+
+completedButton.addEventListener("click", function(event) {
+	taskContainer.classList.add("tasks--inactive");
+	doneTasksContainer.classList.remove("tasks--inactive");
 });
